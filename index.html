@@ -4,52 +4,26 @@
   <meta charset="UTF-8" />
   <title>Next Wave Dallas – Nonprofit Hip Hop Label</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Next Wave Dallas is a nonprofit hip hop & trap label in Dallas supporting artists with housing, healing and higher education instead of exploitation." />
+  <meta name="description" content="Next Wave Dallas is a nonprofit hip hop & trap label in Dallas backing artists with housing, healing and higher education instead of exploitation.">
 
-  <!-- Simple, modern font -->
+  <!-- Simple font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
-    :root {
-      --black: #000000;
-      --white: #ffffff;
-      --gray-light: #f5f5f5;
-      --gray-text: #555555;
-      --red: #e11d48;
-      --red-dark: #b91c1c;
-    }
-
+    /* BASIC RESET */
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--white);
-      color: var(--black);
+      color: #111;
+      background: #ffffff;
       line-height: 1.5;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    /* HEADER */
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 30;
-      background: var(--black);
-      color: var(--white);
-      border-bottom: 1px solid #111111;
-    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
 
     .wrap {
       max-width: 1120px;
@@ -57,8 +31,19 @@
       padding: 0 20px;
     }
 
+    /* HEADER */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: #000;
+      color: #fff;
+      border-bottom: 1px solid #111;
+    }
+
     .header-inner {
-      height: 68px;
+      height: 64px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -73,17 +58,16 @@
     .brand-logo {
       width: 40px;
       height: 40px;
-      overflow: hidden;
     }
 
-    .brand-text-main {
+    .brand-name {
       font-size: 0.9rem;
       font-weight: 600;
       letter-spacing: 0.18em;
       text-transform: uppercase;
     }
 
-    .brand-text-sub {
+    .brand-sub {
       font-size: 0.7rem;
       letter-spacing: 0.16em;
       text-transform: uppercase;
@@ -93,8 +77,8 @@
     nav {
       display: flex;
       gap: 18px;
-      font-size: 0.85rem;
-      letter-spacing: 0.12em;
+      font-size: 0.8rem;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
     }
 
@@ -104,27 +88,30 @@
       border-bottom: 2px solid transparent;
     }
 
-    nav a:hover,
-    nav a:focus {
-      color: var(--white);
-      border-color: var(--red);
+    nav a:hover {
+      color: #fff;
+      border-color: #e11d48;
     }
 
-    /* HERO */
+    /* HERO – LABEL LANDING */
 
     .hero {
-      background: var(--black);
-      color: var(--white);
-      min-height: 80vh;
+      background: #000;
+      color: #fff;
+      min-height: 90vh;
       display: flex;
       align-items: center;
+      text-align: center;
     }
 
     .hero-inner {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-      gap: 40px;
-      padding: 50px 0;
+      padding: 60px 0;
+    }
+
+    .hero-logo {
+      width: 220px;
+      height: 220px;
+      margin: 0 auto 24px;
     }
 
     .hero-kicker {
@@ -142,19 +129,20 @@
     }
 
     .hero-title span {
-      color: var(--red);
+      color: #e11d48;
     }
 
     .hero-text {
-      font-size: 0.98rem;
+      font-size: 0.95rem;
+      max-width: 540px;
+      margin: 0 auto 22px;
       color: #d1d5db;
-      max-width: 460px;
-      margin-bottom: 22px;
     }
 
     .hero-buttons {
       display: flex;
       flex-wrap: wrap;
+      justify-content: center;
       gap: 10px;
       margin-bottom: 18px;
     }
@@ -163,30 +151,29 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      min-width: 190px;
       padding: 10px 20px;
-      border-radius: 3px;
-      border: 1px solid #ffffff33;
+      border-radius: 999px;
       font-size: 0.85rem;
       font-weight: 500;
       cursor: pointer;
+      border: 1px solid #fff;
       background: transparent;
-      color: #f9fafb;
-      transition: background 0.15s ease, border-color 0.15s ease;
+      color: #fff;
     }
 
     .btn-primary {
-      background: var(--red);
-      border-color: var(--red);
+      background: #e11d48;
+      border-color: #e11d48;
     }
 
     .btn-primary:hover {
-      background: var(--red-dark);
-      border-color: var(--red-dark);
+      background: #b91c1c;
+      border-color: #b91c1c;
     }
 
     .btn-outline:hover {
       background: #111827;
-      border-color: #ffffff66;
     }
 
     .hero-meta {
@@ -198,62 +185,21 @@
       content: "• ";
     }
 
-    .hero-right {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 18px;
-    }
-
-    .logo-ring {
-      width: 240px;
-      height: 240px;
-      border-radius: 50%;
-      border: 1px solid #111827;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: radial-gradient(circle at 30% 20%, #ffffff, #1f2937 55%, #000000 100%);
-      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.7);
-      animation: slow-spin 18s linear infinite;
-    }
-
-    .logo-ring img {
-      width: 82%;
-      height: auto;
-    }
-
-    @keyframes slow-spin {
-      from { transform: rotate(0deg); }
-      to   { transform: rotate(360deg); }
-    }
-
-    .hero-tags {
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: #9ca3af;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-    }
-
-    /* SECTIONS */
+    /* SECTIONS – SIMPLE LABEL STYLE */
 
     section {
       padding: 60px 0;
     }
 
     .section-heading {
-      margin-bottom: 28px;
+      margin-bottom: 24px;
     }
 
     .section-kicker {
       font-size: 0.78rem;
       text-transform: uppercase;
       letter-spacing: 0.16em;
-      color: var(--gray-text);
+      color: #6b7280;
       margin-bottom: 6px;
     }
 
@@ -264,30 +210,31 @@
 
     .section-text {
       font-size: 0.95rem;
-      color: var(--gray-text);
-      max-width: 620px;
+      color: #4b5563;
+      max-width: 680px;
     }
 
-    .two-column {
+    .two-col {
       display: grid;
       grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
       gap: 40px;
       font-size: 0.95rem;
-      color: var(--gray-text);
+      color: #4b5563;
+      margin-top: 26px;
     }
 
-    .two-column ul {
-      margin-left: 18px;
+    .two-col ul {
       margin-top: 6px;
+      margin-left: 18px;
     }
 
     .strip-gray {
-      background: var(--gray-light);
+      background: #f5f5f5;
     }
 
     .strip-dark {
-      background: #111111;
-      color: var(--white);
+      background: #111;
+      color: #f9fafb;
     }
 
     .strip-dark .section-text,
@@ -295,22 +242,9 @@
       color: #e5e7eb;
     }
 
-    .list-block ul {
-      margin-top: 8px;
-      margin-left: 18px;
-      color: var(--gray-text);
-      font-size: 0.95rem;
-    }
-
-    .strip-dark .list-block ul {
-      color: #e5e7eb;
-    }
-
-    /* FOOTER */
-
     footer {
-      padding: 20px 0 26px;
-      background: var(--black);
+      padding: 18px 0 24px;
+      background: #000;
       color: #9ca3af;
       font-size: 0.8rem;
     }
@@ -327,27 +261,22 @@
 
     @media (max-width: 880px) {
       nav {
-        display: none;
+        display: none; /* keep header super simple on mobile */
       }
 
-      .hero-inner,
-      .two-column {
+      .two-col {
         grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    @media (max-width: 640px) {
-      .hero {
-        min-height: 0;
-      }
-
-      .logo-ring {
-        width: 200px;
-        height: 200px;
       }
 
       section {
         padding: 48px 0;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-logo {
+        width: 180px;
+        height: 180px;
       }
     }
   </style>
@@ -362,8 +291,8 @@
           <img src="09CA16FB-E78F-4689-B762-2F00FF6511C2.png" alt="Next Wave Dallas logo">
         </div>
         <div>
-          <div class="brand-text-main">Next Wave Dallas</div>
-          <div class="brand-text-sub">Nonprofit Hip Hop Label</div>
+          <div class="brand-name">Next Wave Dallas</div>
+          <div class="brand-sub">Nonprofit Hip Hop Label</div>
         </div>
       </div>
 
@@ -371,7 +300,7 @@
         <a href="#home">Home</a>
         <a href="#label">Label</a>
         <a href="#programs">Programs</a>
-        <a href="#artists">For Artists</a>
+        <a href="#artists">Artists</a>
         <a href="#partners">Partners</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -384,73 +313,67 @@
   <section class="hero">
     <div class="wrap">
       <div class="hero-inner">
-        <div>
-          <div class="hero-kicker">Dallas • Hip Hop • Trap &amp; R&amp;B</div>
-          <h1 class="hero-title">
-            A nonprofit label for <span>artists the system left behind.</span>
-          </h1>
-          <p class="hero-text">
-            Next Wave Dallas backs young hip hop and trap artists with housing, therapy,
-            casework and higher education—so the music becomes a path out, not a survival script.
-          </p>
-          <div class="hero-buttons">
-            <button class="btn btn-primary" onclick="document.getElementById('artists').scrollIntoView({behavior:'smooth'})">
-              I’m an Artist / I Know One
-            </button>
-            <button class="btn btn-outline" onclick="document.getElementById('programs').scrollIntoView({behavior:'smooth'})">
-              How the Program Works
-            </button>
-          </div>
-          <div class="hero-meta">
-            <span>Artists keep ownership of their work (max 5% back to the org)</span>
-            <span>Nonviolent, trauma-informed, fully secular</span>
-          </div>
+        <div class="hero-logo">
+          <!-- floating logo only -->
+          <img src="09CA16FB-E78F-4689-B762-2F00FF6511C2.png" alt="Next Wave Dallas logo">
         </div>
 
-        <div class="hero-right">
-          <div class="logo-ring">
-            <img src="09CA16FB-E78F-4689-B762-2F00FF6511C2.png" alt="Next Wave Dallas graffiti logo">
-          </div>
-          <div class="hero-tags">
-            <span>Label</span><span>Housing</span><span>Healing</span><span>Higher Ed</span>
-          </div>
+        <div class="hero-kicker">Dallas • Hip Hop • Trap &amp; R&amp;B</div>
+
+        <h1 class="hero-title">
+          A nonprofit label for <span>artists the system left behind.</span>
+        </h1>
+
+        <p class="hero-text">
+          Next Wave Dallas backs justice-impacted artists with housing, therapy, casework and higher education
+          so their music becomes a path out, not a survival script.
+        </p>
+
+        <div class="hero-buttons">
+          <a class="btn btn-primary" href="#artists">I’m an Artist / I Know One</a>
+          <a class="btn btn-outline" href="#programs">How the Program Works</a>
+        </div>
+
+        <div class="hero-meta">
+          <span>Nonviolent, trauma-informed, fully secular</span>
+          <span>Artists keep ownership of their work (max 5% royalty to the org)</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- LABEL -->
+  <!-- LABEL / COMPANY -->
   <section id="label">
     <div class="wrap">
       <div class="section-heading">
         <div class="section-kicker">The label</div>
-        <h2 class="section-title">Hip hop isn’t the problem—it’s the path out.</h2>
+        <h2 class="section-title">Hip hop isn’t the problem. It’s the path out.</h2>
         <p class="section-text">
-          Next Wave Dallas is a hip hop / trap–specific nonprofit record label. We combine
-          artist development with housing, mental health, and higher education in one ecosystem.
+          Next Wave Dallas is a hip hop and trap-specific nonprofit record label based in Dallas.
+          We combine artist development with housing, mental health, and higher education in one organization.
         </p>
       </div>
 
-      <div class="two-column">
+      <div class="two-col">
         <div>
           <strong>Mission</strong>
           <p>
             Empower the next wave of hip hop artists through healing, housing, and higher education—
-            without violence and without exploitation.
+            without violence, without exploitation.
           </p>
           <br />
           <strong>Vision</strong>
           <p>
-            A world where trap and R&amp;B aren’t tools of survival, but platforms for healing,
-            ownership, and lasting change starting in Dallas.
+            A world where trap and R&amp;B aren’t tools of survival, but platforms for healing, ownership,
+            and lasting change starting in Dallas.
           </p>
         </div>
         <div>
-          <strong>Core principles</strong>
+          <strong>Core values</strong>
           <ul>
-            <li>Anti-violence and pro-autonomy.</li>
+            <li>Anti-violence &amp; pro-autonomy.</li>
             <li>Artists retain ownership of their work.</li>
-            <li>Trauma-informed care rooted in criminology.</li>
+            <li>Trauma-informed, justice-focused care.</li>
             <li>No religious angle—fully secular support.</li>
           </ul>
         </div>
@@ -463,29 +386,29 @@
     <div class="wrap">
       <div class="section-heading">
         <div class="section-kicker">Programs</div>
-        <h2 class="section-title">Two ways into the family.</h2>
+        <h2 class="section-title">Two ways into the Next Wave.</h2>
         <p class="section-text">
-          In-house housing for artists who need stability. Outpatient support for artists already
-          in the community. Same expectations: renounce violence and do the work.
+          In-house housing for artists who need stability. Outpatient support for artists already in the community.
+          Same expectations: renounce violence, show up, do the work.
         </p>
       </div>
 
-      <div class="two-column">
-        <div class="list-block">
+      <div class="two-col">
+        <div>
           <strong>In-house (residential)</strong>
           <ul>
             <li>Transitional / supportive housing in Dallas.</li>
-            <li>Mandatory renouncement of violence and drill crew activity.</li>
-            <li>Therapy, anger management, MRT, psychiatry.</li>
+            <li>Mandatory renouncement of violence and drill-crew activity.</li>
+            <li>Therapy, anger management, MRT and psychiatry.</li>
             <li>Full-time social worker for case management.</li>
           </ul>
         </div>
-        <div class="list-block">
-          <strong>Outpatient (non-residential)</strong>
+        <div>
+          <strong>Outpatient (community)</strong>
           <ul>
-            <li>Outreach social worker who meets artists where they are.</li>
-            <li>Support around probation terms, court dates and employment.</li>
-            <li>Help with shows, releases, interviews and grants.</li>
+            <li>Outreach social worker for artists not living on-site.</li>
+            <li>Support with probation terms, court dates and employment.</li>
+            <li>Help preparing for shows, releases, interviews and grants.</li>
             <li>Pathway to earn housing through progress and consistency.</li>
           </ul>
         </div>
@@ -493,47 +416,43 @@
 
       <br />
 
-      <div class="list-block">
-        <strong>Education: Dallas College partnership (in progress)</strong>
-        <ul>
-          <li>GED support for artists who need a diploma.</li>
-          <li>Commercial Music A.A.S. tracks:
-            Music Business, Performing Musician, Producer &amp; Songwriter, Recording Technology.
-          </li>
-        </ul>
+      <div class="section-text">
+        <strong>Education</strong><br />
+        Dallas College partnership in progress: GED support plus Commercial Music A.A.S. tracks in
+        Music Business, Performing Musician, Producer &amp; Songwriter, and Recording Technology.
       </div>
     </div>
   </section>
 
-  <!-- ARTISTS -->
+  <!-- FOR ARTISTS -->
   <section id="artists" class="strip-dark">
     <div class="wrap">
       <div class="section-heading">
         <div class="section-kicker">For artists</div>
         <h2 class="section-title">Who we’re built for.</h2>
         <p class="section-text">
-          Trap and R&amp;B artists and producers with real stories, who are ready to leave violence behind
+          Trap and R&amp;B artists and producers with real stories who are ready to leave violence behind
           and build careers with support—not exploitation.
         </p>
       </div>
 
-      <div class="two-column">
-        <div class="list-block">
+      <div class="two-col">
+        <div>
           <strong>You might be a fit if…</strong>
           <ul>
-            <li>You create hip hop / trap / R&amp;B and take your craft seriously.</li>
+            <li>You make hip hop / trap / R&amp;B and take your craft seriously.</li>
             <li>You’re navigating probation, court, or unstable housing.</li>
-            <li>You’re willing to renounce violence and work in a non-violent space.</li>
+            <li>You’re willing to work in a non-violent, accountability-based space.</li>
             <li>You’re open to therapy, coaching and honest feedback.</li>
           </ul>
         </div>
-        <div class="list-block">
+        <div>
           <strong>What you get</strong>
           <ul>
-            <li>Studios, producers and engineers who respect your story.</li>
-            <li>Case management, mental health support and housing pathways.</li>
-            <li>Education options through GED and Commercial Music degrees.</li>
-            <li>Shows, press and public-voice support aligned with your brand.</li>
+            <li>Respectful studio access, producers and engineers.</li>
+            <li>Case management, mental-health support and housing pathways.</li>
+            <li>Education options: GED and Commercial Music degrees.</li>
+            <li>Shows, press and brand support aligned with your story.</li>
           </ul>
         </div>
       </div>
@@ -541,7 +460,7 @@
       <br />
 
       <p class="section-text">
-        Year one: a pilot cohort of <strong>3–5 artists in Dallas</strong>, building a collaborative project
+        Year one launches with a pilot cohort of <strong>3–5 Dallas artists</strong> and a collaborative project
         (EP or mixtape) that doubles as a fundraiser and proof of concept.
       </p>
     </div>
@@ -554,13 +473,13 @@
         <div class="section-kicker">Partners</div>
         <h2 class="section-title">Courts, funders and industry at the same table.</h2>
         <p class="section-text">
-          Next Wave Dallas is built so probation, public defenders, foundations and music partners can plug in
+          Next Wave Dallas is designed so probation, public defenders, foundations and music partners can plug in
           without compromising safety or artist ownership.
         </p>
       </div>
 
-      <div class="two-column">
-        <div class="list-block">
+      <div class="two-col">
+        <div>
           <strong>Courts &amp; probation</strong>
           <ul>
             <li>Alternative-to-incarceration and re-entry placements.</li>
@@ -568,11 +487,11 @@
             <li>Secure, staffed housing for select clients.</li>
           </ul>
         </div>
-        <div class="list-block">
+        <div>
           <strong>Funders &amp; industry</strong>
           <ul>
             <li>Underwrite beds, therapy hours and tuition.</li>
-            <li>Support key roles: social workers, lawyer, security, admin.</li>
+            <li>Support key staff: social workers, lawyer, security, admin.</li>
             <li>Studios, producers, venues and publicists who respect artist autonomy.</li>
           </ul>
         </div>
@@ -581,8 +500,8 @@
       <br />
 
       <p class="section-text">
-        The long-term funding model blends donations, grants, a modest royalty cap
-        (up to 5% back to the org), merch and performances—so the label is sustainable without ever robbing the artists.
+        The funding model blends donations, grants, a modest royalty cap (up to 5% back to the org),
+        merch and performances—so the label is sustainable without ever robbing the artists.
       </p>
     </div>
   </section>
@@ -594,24 +513,24 @@
         <div class="section-kicker">Contact</div>
         <h2 class="section-title">Start the conversation.</h2>
         <p class="section-text">
-          This demo version doesn’t send forms yet, but this is how we expect people to reach
-          Next Wave Dallas as the label comes online.
+          This demo doesn’t send live forms yet, but this is how we expect people to reach Next Wave Dallas
+          as the label comes online.
         </p>
       </div>
 
-      <div class="two-column">
+      <div class="two-col">
         <div>
           <strong>Artist &amp; court referrals</strong>
           <p>
-            Use an inbox like <strong>artists@nextwavedallas.org</strong> for demo links,
-            probation referrals and applications to the pilot cohort.
+            Use an inbox like <strong>artists@nextwavedallas.org</strong> for demo links, probation referrals
+            and applications to the pilot cohort.
           </p>
         </div>
         <div>
           <strong>Partnerships &amp; press</strong>
           <p>
-            Use <strong>info@nextwavedallas.org</strong> for donors, community organizations,
-            colleges, and media or podcast requests.
+            Use <strong>info@nextwavedallas.org</strong> for donors, community organizations, colleges,
+            and media or podcast requests.
           </p>
         </div>
       </div>
