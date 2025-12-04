@@ -9,27 +9,33 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg-body: #fdfbf7;
-      --bg-card: #ffffff;
-      --ink: #18181b;
-      --muted: #6b7280;
-      --accent: #0f766e;
-      --accent-soft: #e0f2f1;
-      --border: #e5e7eb;
+      --bg-main: #050509;
+      --bg-alt: #0b0b12;
+      --bg-card: #111118;
+      --bg-card-soft: #181826;
+      --accent: #14f1ff;
+      --accent-2: #ff5a3c;
+      --muted: #9ca3af;
+      --ink: #f9fafb;
+      --border-soft: rgba(148, 163, 184, 0.3);
       --radius-lg: 18px;
       --radius-md: 12px;
-      --shadow-soft: 0 16px 40px rgba(15, 23, 42, 0.08);
+      --shadow-soft: 0 18px 60px rgba(15, 23, 42, 0.75);
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     html, body {
       font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--bg-body);
+      background: radial-gradient(circle at top, #14141f 0, #050509 55%, #020204 100%);
       color: var(--ink);
       scroll-behavior: smooth;
     }
@@ -38,30 +44,46 @@
 
     a { color: inherit; text-decoration: none; }
 
-    .page {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 1.4rem 3rem;
-    }
-
     /* NAV */
+
     .nav {
-      border-bottom: 1px solid rgba(148, 163, 184, 0.3);
-      background: rgba(253, 251, 247, 0.96);
-      backdrop-filter: blur(12px);
       position: sticky;
       top: 0;
       z-index: 40;
+      backdrop-filter: blur(14px);
+      background: rgba(5, 5, 9, 0.94);
+      border-bottom: 1px solid rgba(15, 23, 42, 0.8);
     }
 
     .nav-inner {
-      max-width: 1100px;
+      max-width: 1140px;
       margin: 0 auto;
-      padding: 0.75rem 1.4rem;
+      padding: 0.75rem 1.25rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1rem;
+      gap: 1.25rem;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+
+    .logo-box {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      overflow: hidden;
+      background: radial-gradient(circle at top, #ffffff 0, #111827 40%, #020617 100%);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8);
+    }
+
+    .logo-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .brand-text {
@@ -71,17 +93,17 @@
     }
 
     .brand-name {
-      font-family: "Playfair Display", serif;
-      font-size: 1.25rem;
-      letter-spacing: 0.08em;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      font-size: 0.82rem;
       text-transform: uppercase;
     }
 
     .brand-tagline {
-      font-size: 0.75rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+      font-size: 0.7rem;
       color: var(--muted);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
     }
 
     .nav-links {
@@ -100,194 +122,248 @@
 
     .nav-links a:hover,
     .nav-links a.active {
-      color: var(--ink);
       border-color: var(--accent);
+      color: var(--ink);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .nav-pill {
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      font-size: 0.72rem;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .nav-pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0, #ffffff, #22c55e);
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.9);
+    }
+
+    .btn {
+      border-radius: 999px;
+      border: 1px solid transparent;
+      padding: 0.55rem 1.15rem;
+      font-size: 0.8rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      background: none;
+      color: inherit;
+      transition: all 0.16s ease-out;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #38bdf8);
+      border-color: rgba(148, 163, 184, 0.2);
+      color: #020617;
+      box-shadow: 0 14px 40px rgba(8, 47, 73, 0.8);
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.03);
+      transform: translateY(-1px);
     }
 
     .nav-toggle {
       display: none;
       width: 34px;
-      height: 28px;
+      height: 30px;
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.8);
-      background: #ffffff;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: #020617;
       align-items: center;
       justify-content: center;
     }
 
     .nav-toggle-line {
-      width: 15px;
+      width: 16px;
       height: 2px;
-      background: #111827;
-      position: relative;
+      background: #e5e7eb;
       border-radius: 999px;
+      position: relative;
     }
+
     .nav-toggle-line::before,
     .nav-toggle-line::after {
       content: "";
       position: absolute;
       inset-inline: 0;
       height: 2px;
-      background: #111827;
       border-radius: inherit;
+      background: inherit;
     }
+
     .nav-toggle-line::before { transform: translateY(-5px); }
     .nav-toggle-line::after  { transform: translateY(5px); }
 
-    /* HERO */
-    header.hero {
-      padding: 2.3rem 0 2.3rem;
-      border-bottom: 1px solid var(--border);
+    /* LAYOUT */
+
+    .page {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 1.25rem 3rem;
     }
 
-    .hero-inner {
+    /* HERO – LABEL STYLE */
+
+    .hero {
+      min-height: 88vh;
       display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr);
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
       gap: 2rem;
       align-items: center;
+      padding-top: 2.2rem;
+      padding-bottom: 2.4rem;
     }
 
-    .eyebrow {
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .hero-logo-wrap {
+      width: min(360px, 80vw);
+      filter: drop-shadow(0 20px 50px rgba(0, 0, 0, 0.9));
+      transform-origin: center;
+      animation: logoFloat 8s ease-in-out infinite alternate;
+    }
+
+    @keyframes logoFloat {
+      0%   { transform: translateY(0px) rotate(-1deg); }
+      100% { transform: translateY(-6px) rotate(1deg); }
+    }
+
+    .hero-eyebrow {
       text-transform: uppercase;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.18em;
       font-size: 0.72rem;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
+      color: var(--muted);
     }
 
     .hero-title {
-      font-family: "Playfair Display", serif;
-      font-size: clamp(2.2rem, 3.1vw, 2.8rem);
+      font-size: clamp(2.1rem, 3.4vw, 2.8rem);
+      font-weight: 700;
       letter-spacing: -0.03em;
-      line-height: 1.1;
-      margin-bottom: 0.6rem;
     }
 
-    .hero-highlight {
-      display: inline-block;
-      background: var(--accent-soft);
-      padding: 0.1rem 0.4rem;
-      border-radius: 6px;
+    .hero-title span {
+      color: var(--accent);
     }
 
     .hero-sub {
-      font-size: 0.98rem;
+      font-size: 0.95rem;
       color: var(--muted);
+      max-width: 32rem;
       line-height: 1.7;
-      max-width: 34rem;
     }
 
-    .hero-sub strong { color: var(--ink); font-weight: 600; }
+    .hero-sub strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
 
     .hero-ctas {
-      margin-top: 1.4rem;
       display: flex;
       flex-wrap: wrap;
       gap: 0.8rem;
-    }
-
-    .btn {
-      border-radius: 999px;
-      border: 1px solid transparent;
-      padding: 0.65rem 1.4rem;
-      font-size: 0.86rem;
-      cursor: pointer;
-      background: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.4rem;
-      transition: all 0.16s ease-out;
-      white-space: nowrap;
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: #f9fafb;
-      border-color: var(--accent);
-      box-shadow: 0 12px 30px rgba(15, 118, 110, 0.35);
-    }
-
-    .btn-primary:hover { filter: brightness(0.93); }
-
-    .btn-ghost {
-      border-color: rgba(148, 163, 184, 0.6);
-      color: var(--ink);
-      background: #ffffff;
-    }
-    .btn-ghost:hover {
-      border-color: var(--accent);
+      margin-top: 0.4rem;
     }
 
     .hero-meta {
-      margin-top: 1.2rem;
       display: flex;
       flex-wrap: wrap;
-      gap: 0.6rem;
+      gap: 0.55rem;
+      margin-top: 0.7rem;
       font-size: 0.78rem;
     }
 
     .meta-pill {
-      padding: 0.35rem 0.8rem;
+      padding: 0.3rem 0.8rem;
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      background: #ffffff;
+      border: 1px solid rgba(148, 163, 184, 0.5);
       color: var(--muted);
+      background: rgba(15, 23, 42, 0.9);
     }
 
-    .hero-side {
-      border-radius: 18px;
-      background: #ffffff;
-      border: 1px solid var(--border);
-      padding: 1.1rem 1.2rem;
+    .hero-right {
+      border-radius: 22px;
+      background: radial-gradient(circle at top, #1e293b 0, #020617 55%);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      padding: 1.1rem 1.1rem 1.3rem;
       box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
     }
 
-    .hero-side-label {
+    .hero-right-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.7rem;
+      align-items: center;
+    }
+
+    .hero-right-title {
+      font-size: 0.9rem;
       text-transform: uppercase;
-      letter-spacing: 0.15em;
-      font-size: 0.7rem;
+      letter-spacing: 0.16em;
       color: var(--muted);
-      margin-bottom: 0.25rem;
     }
 
-    .hero-side-title {
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
+    .hero-right-chip {
+      font-size: 0.74rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.9);
     }
 
     .hero-quote {
       font-size: 0.9rem;
-      color: var(--muted);
-      border-left: 3px solid var(--accent-soft);
-      padding-left: 0.75rem;
-      margin-bottom: 0.9rem;
+      color: #e5e7eb;
       line-height: 1.6;
-      font-style: italic;
+      position: relative;
+      padding-left: 0.7rem;
+      border-left: 2px solid rgba(148, 163, 184, 0.7);
     }
 
     .hero-quote span {
-      color: var(--accent);
-      font-weight: 600;
-      font-style: normal;
+      color: #facc15;
+      font-weight: 500;
     }
 
-    .hero-grid {
+    .hero-mini-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.9rem;
-      font-size: 0.82rem;
+      gap: 0.7rem;
+      font-size: 0.78rem;
     }
 
-    .hero-grid-box {
-      padding: 0.75rem 0.8rem;
+    .hero-mini-card {
       border-radius: 12px;
-      background: #f9fafb;
-      border: 1px solid var(--border);
+      padding: 0.7rem 0.7rem 0.8rem;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.45);
     }
 
-    .hero-grid-title {
+    .hero-mini-label {
       text-transform: uppercase;
       letter-spacing: 0.14em;
       font-size: 0.7rem;
@@ -295,311 +371,276 @@
       margin-bottom: 0.25rem;
     }
 
-    .hero-grid-list {
+    .hero-mini-list {
       list-style: none;
       display: grid;
-      gap: 0.2rem;
-      color: var(--muted);
+      gap: 0.22rem;
+      color: #e5e7eb;
     }
 
-    .hero-grid-list li::before {
+    .hero-mini-list li::before {
       content: "• ";
       color: var(--accent);
     }
 
-    /* SECTIONS */
+    .hero-footer-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-top: 0.25rem;
+      font-size: 0.74rem;
+    }
+
+    .hero-tag {
+      padding: 0.26rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.95);
+      color: #cbd5f5;
+    }
+
+    /* LABEL GRID – CLICK CARDS */
+
     section {
-      padding: 2.4rem 0 0;
+      padding-top: 1.7rem;
     }
 
     .section-header {
       display: flex;
       justify-content: space-between;
-      gap: 1.1rem;
+      gap: 1rem;
       align-items: flex-end;
-      margin-bottom: 1.4rem;
+      margin-bottom: 1.1rem;
     }
 
     .section-title-block {
-      max-width: 32rem;
+      max-width: 30rem;
+    }
+
+    .section-eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
     }
 
     .section-title {
-      font-family: "Playfair Display", serif;
-      font-size: 1.6rem;
+      font-size: 1.35rem;
       letter-spacing: -0.02em;
-      margin-bottom: 0.4rem;
     }
 
     .section-sub {
-      font-size: 0.9rem;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .section-note {
-      max-width: 19rem;
-      font-size: 0.82rem;
-      color: var(--muted);
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1.2rem;
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.1rem;
-    }
-
-    .grid-auto {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 1.1rem;
-    }
-
-    .card {
-      border-radius: var(--radius-lg);
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      padding: 1rem 1rem 1.1rem;
-      box-shadow: var(--shadow-soft);
-    }
-
-    .card-label {
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      font-size: 0.68rem;
-      color: var(--muted);
-      margin-bottom: 0.3rem;
-    }
-
-    .card-title {
-      font-size: 1.02rem;
-      font-weight: 600;
-      margin-bottom: 0.4rem;
-    }
-
-    .card-sub {
       font-size: 0.86rem;
       color: var(--muted);
-      margin-bottom: 0.5rem;
-    }
-
-    .card-list {
-      list-style: none;
-      font-size: 0.84rem;
-      color: var(--muted);
-      display: grid;
-      gap: 0.3rem;
-    }
-
-    .card-list li {
-      padding-left: 0.9rem;
-      position: relative;
-      line-height: 1.6;
-    }
-
-    .card-list li::before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      color: var(--accent);
-    }
-
-    .quote {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-top: 0.6rem;
-      border-left: 2px solid var(--accent-soft);
-      padding-left: 0.6rem;
-      font-style: italic;
-    }
-    .quote span {
-      font-style: normal;
-      font-weight: 600;
-      color: var(--accent);
-    }
-
-    /* PROGRAMS */
-    .program-card {
-      border-radius: var(--radius-lg);
-      background: #ffffff;
-      border: 1px solid var(--border);
-      padding: 1rem 1rem 1.1rem;
-      box-shadow: var(--shadow-soft);
-    }
-
-    .program-title {
-      font-size: 0.98rem;
-      font-weight: 600;
-      margin-bottom: 0.3rem;
-    }
-
-    .program-tag {
-      font-size: 0.7rem;
-      padding: 0.18rem 0.6rem;
-      border-radius: 999px;
-      background: var(--accent-soft);
-      color: var(--accent);
-      margin-left: 0.4rem;
-    }
-
-    .program-sub {
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin-bottom: 0.45rem;
-    }
-
-    .program-list {
-      list-style: none;
-      display: grid;
-      gap: 0.25rem;
-      font-size: 0.84rem;
-      color: var(--muted);
-    }
-
-    .program-list li {
-      padding-left: 0.9rem;
-      position: relative;
-      line-height: 1.6;
-    }
-    .program-list li::before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      color: var(--accent);
-    }
-
-    /* GET INVOLVED & CONTACT */
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      font-size: 0.8rem;
-    }
-
-    .soft-pill {
-      padding: 0.35rem 0.9rem;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: #ffffff;
-      color: var(--muted);
-    }
-
-    .contact-card {
-      margin-top: 1.5rem;
-      border-radius: 20px;
-      border: 1px solid var(--border);
-      background: #ffffff;
-      box-shadow: var(--shadow-soft);
-      padding: 1.3rem 1.3rem 1.4rem;
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-      gap: 1.5rem;
-    }
-
-    form {
-      display: grid;
-      gap: 0.8rem;
-      font-size: 0.82rem;
-    }
-
-    label {
-      display: grid;
-      gap: 0.25rem;
-    }
-
-    label span {
-      font-weight: 500;
-    }
-
-    input, select, textarea {
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      padding: 0.55rem 0.6rem;
-      font-family: inherit;
-      font-size: 0.82rem;
-      background: #f9fafb;
-      color: var(--ink);
-      outline: none;
-      transition: border-color 0.16s ease-out, box-shadow 0.16s ease-out, background 0.16s ease-out;
-    }
-
-    input::placeholder,
-    textarea::placeholder {
-      color: #9ca3af;
-    }
-
-    textarea {
-      min-height: 110px;
-      resize: vertical;
-    }
-
-    input:focus,
-    select:focus,
-    textarea:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 1px rgba(15, 118, 110, 0.25);
-      background: #ffffff;
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.8rem;
-    }
-
-    .form-note {
-      font-size: 0.74rem;
-      color: var(--muted);
-      margin-top: -0.25rem;
-    }
-
-    .btn-block {
-      width: 100%;
-      justify-content: center;
       margin-top: 0.25rem;
     }
 
+    .section-note {
+      font-size: 0.8rem;
+      color: var(--muted);
+      max-width: 17rem;
+    }
+
+    .grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .tile {
+      border-radius: var(--radius-lg);
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.28), transparent 55%),
+                  radial-gradient(circle at bottom right, rgba(248, 113, 113, 0.35), transparent 52%),
+                  var(--bg-card);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      box-shadow: var(--shadow-soft);
+      padding: 0.9rem 0.95rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.16s ease-out, box-shadow 0.16s ease-out, border-color 0.16s ease-out;
+    }
+
+    .tile:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 70px rgba(0, 0, 0, 0.95);
+      border-color: rgba(244, 244, 245, 0.8);
+    }
+
+    .tile-tag {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #e5e7eb;
+    }
+
+    .tile-title {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .tile-sub {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .tile-footer {
+      margin-top: 0.15rem;
+      font-size: 0.78rem;
+      color: #e5e7eb;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .tile-footer span {
+      font-size: 1rem;
+      transform: translateY(1px);
+    }
+
+    /* NEWS STRIP */
+
+    .news-strip {
+      margin-top: 2rem;
+      border-radius: 16px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: linear-gradient(135deg, #111827, #020617);
+      padding: 0.85rem 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      align-items: center;
+      font-size: 0.8rem;
+    }
+
+    .news-label {
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.7rem;
+      color: #fbbf24;
+    }
+
+    .news-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      color: #e5e7eb;
+    }
+
+    .news-pill {
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
     /* FOOTER */
+
     footer {
-      margin-top: 2.5rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid var(--border);
+      margin-top: 2.3rem;
+      padding-top: 1.4rem;
+      border-top: 1px solid rgba(31, 41, 55, 0.9);
       font-size: 0.78rem;
       color: var(--muted);
       display: flex;
-      justify-content: space-between;
-      gap: 0.8rem;
       flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.7rem;
     }
 
-    /* RESPONSIVE */
+    /* MODALS */
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.78);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      z-index: 60;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal {
+      max-width: 880px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      border-radius: 22px;
+      background: radial-gradient(circle at top, #111827 0, #020617 55%);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.95);
+      padding: 1.2rem 1.3rem 1.4rem;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .modal-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .modal-close {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      width: 30px;
+      height: 30px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(15, 23, 42, 0.9);
+      color: #e5e7eb;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .modal-body {
+      font-size: 0.84rem;
+      color: #e5e7eb;
+      line-height: 1.7;
+    }
+
+    .modal-body h4 {
+      margin-top: 0.7rem;
+      margin-bottom: 0.25rem;
+      font-size: 0.95rem;
+    }
+
+    .modal-body p {
+      margin-bottom: 0.35rem;
+    }
+
+    .modal-body ul {
+      margin: 0.25rem 0 0.45rem 1rem;
+    }
+
+    .modal-body li {
+      margin-bottom: 0.18rem;
+    }
+
+    .modal-tagline {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+
     @media (max-width: 880px) {
-      .hero-inner { grid-template-columns: 1fr; }
-      .hero-side { order: 2; }
-      .hero-meta { margin-bottom: 0.5rem; }
-
-      .section-header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .grid-2 {
-        grid-template-columns: 1fr;
-      }
-
-      .grid-3 {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .contact-card {
-        grid-template-columns: 1fr;
-      }
+      .nav-right { display: none; }
+      .nav-toggle { display: inline-flex; }
 
       .nav-links {
         position: fixed;
@@ -607,13 +648,13 @@
         top: 56px;
         flex-direction: column;
         align-items: flex-start;
-        padding: 0.9rem 1.4rem 1.2rem;
-        background: rgba(253, 251, 247, 0.98);
-        border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+        padding: 0.9rem 1.25rem 1.1rem;
+        background: rgba(5, 5, 9, 0.97);
+        border-bottom: 1px solid rgba(15, 23, 42, 0.9);
         transform: translateY(-140%);
         opacity: 0;
         pointer-events: none;
-        transition: all 0.16s ease-out;
+        transition: all 0.18s ease-out;
       }
 
       .nav-links.open {
@@ -622,18 +663,20 @@
         pointer-events: auto;
       }
 
-      .nav-toggle { display: inline-flex; }
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 1.7rem;
+      }
 
-      .page { padding-inline: 1.2rem; }
+      .hero-right { order: 2; }
+
+      .page {
+        padding-inline: 1.1rem;
+      }
     }
 
     @media (max-width: 640px) {
-      .grid-3 {
-        grid-template-columns: 1fr;
-      }
-      .form-row {
-        grid-template-columns: 1fr;
-      }
+      .hero-logo-wrap { width: min(300px, 80vw); }
     }
   </style>
 </head>
@@ -641,18 +684,32 @@
   <!-- NAV -->
   <nav class="nav">
     <div class="nav-inner">
-      <div class="brand-text">
-        <div class="brand-name">Next Wave Dallas</div>
-        <div class="brand-tagline">Nonprofit Hip Hop Label</div>
+      <div class="nav-left">
+        <div class="logo-box">
+          <!-- Your graffiti logo file -->
+          <img src="next-wave-dallas-logo.png" alt="Next Wave Dallas logo">
+        </div>
+        <div class="brand-text">
+          <div class="brand-name">Next Wave Dallas</div>
+          <div class="brand-tagline">Nonprofit Hip Hop Label</div>
+        </div>
       </div>
 
       <div class="nav-links" id="navLinks">
-        <a href="#about" class="nav-link active">About</a>
-        <a href="#programs" class="nav-link">Programs</a>
-        <a href="#artists" class="nav-link">Artists &amp; Impact</a>
-        <a href="#team" class="nav-link">Team</a>
-        <a href="#get-involved" class="nav-link">Get Involved</a>
+        <a href="#top" class="nav-link active">Home</a>
+        <a href="#tiles" class="nav-link">Label Overview</a>
+        <a href="#news" class="nav-link">News</a>
         <a href="#contact" class="nav-link">Contact</a>
+      </div>
+
+      <div class="nav-right">
+        <div class="nav-pill">
+          <span class="nav-pill-dot"></span>
+          Building the next wave of Dallas hip hop
+        </div>
+        <button class="btn btn-primary" data-open="modal-artists">
+          For Artists
+        </button>
       </div>
 
       <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
@@ -661,459 +718,212 @@
     </div>
   </nav>
 
-  <main class="page">
+  <main class="page" id="top">
     <!-- HERO -->
-    <header class="hero">
-      <div class="hero-inner">
+    <section class="hero">
+      <div class="hero-left">
+        <div class="hero-logo-wrap">
+          <img src="next-wave-dallas-logo.png" alt="Next Wave Dallas graffiti logo">
+        </div>
         <div>
-          <div class="eyebrow">Hip hop • Housing • Healing • Higher education</div>
+          <div class="hero-eyebrow">Hip hop • Housing • Healing • Higher education</div>
           <h1 class="hero-title">
-            A nonprofit label for the
-            <span class="hero-highlight">next wave of Dallas artists.</span>
+            A nonprofit label for <span>Dallas artists the system left behind.</span>
           </h1>
           <p class="hero-sub">
             <strong>Next Wave Dallas</strong> is a hip hop &amp; trap–specific nonprofit record label.
             We back young artists with housing, therapy, and higher education—so their music
             becomes a path out, not a trap.
           </p>
-
-          <div class="hero-ctas">
-            <button class="btn btn-primary" data-scroll="#get-involved">
-              I’m an Artist / I Know One
-            </button>
-            <button class="btn btn-ghost" data-scroll="#programs">
-              How the Program Works
-            </button>
-          </div>
-
-          <div class="hero-meta">
-            <span class="meta-pill">Artists keep ownership of their work.</span>
-            <span class="meta-pill">Nonviolent, trauma-informed, fully secular.</span>
-          </div>
         </div>
+        <div class="hero-ctas">
+          <button class="btn btn-primary" data-open="modal-artists">
+            I’m an Artist / I Know One
+          </button>
+          <button class="btn" style="border:1px solid var(--border-soft);" data-open="modal-programs">
+            How the Program Works
+          </button>
+        </div>
+        <div class="hero-meta">
+          <span class="meta-pill">Artists keep ownership of their work.</span>
+          <span class="meta-pill">Nonviolent. Trauma-informed. Fully secular.</span>
+        </div>
+      </div>
 
-        <aside class="hero-side">
-          <div class="hero-side-label">Founders &amp; mission</div>
-          <div class="hero-side-title">Paige Smith, M.S. &amp; Kevin Almond, MBA</div>
-          <p class="hero-quote">
-            “We’re building a label where <span>hip hop isn’t the problem</span>—it’s the path out.
-            Artists get housing, healing, education, and deals that don’t rob them.”
-          </p>
-          <div class="hero-grid">
-            <div class="hero-grid-box">
-              <div class="hero-grid-title">What we focus on</div>
-              <ul class="hero-grid-list">
-                <li>Nonviolent artist development</li>
-                <li>Transitional housing &amp; casework</li>
-                <li>GED &amp; commercial music degrees</li>
-              </ul>
-            </div>
-            <div class="hero-grid-box">
-              <div class="hero-grid-title">Who we serve</div>
-              <ul class="hero-grid-list">
-                <li>Trap / R&amp;B artists &amp; producers</li>
-                <li>Probation &amp; reentry-impacted youth</li>
-                <li>Survivors of system &amp; street harm</li>
-              </ul>
+      <aside class="hero-right" aria-label="Founders overview">
+        <div class="hero-right-header">
+          <div>
+            <div class="hero-right-title">Founders &amp; Mission</div>
+            <div style="font-size:0.86rem; margin-top:0.15rem;">
+              Paige Smith, M.S. &amp; Kevin Almond, MBA
             </div>
           </div>
-        </aside>
-      </div>
-    </header>
-
-    <!-- ABOUT -->
-    <section id="about">
-      <div class="section-header">
-        <div class="section-title-block">
-          <div class="eyebrow">About the label</div>
-          <h2 class="section-title">Hip hop is not the problem. It’s the blueprint out.</h2>
-          <p class="section-sub">
-            Next Wave Dallas is a hip hop/trap–focused nonprofit rooted in criminology and
-            trauma-informed care. We’re here for the artist with a record and a story, not just a
-            follower count. Our mission is to replace survival cycles with creative freedom,
-            ownership, and opportunity.
-          </p>
+          <div class="hero-right-chip">Dallas • Trap &amp; R&amp;B</div>
         </div>
-        <p class="section-note">
-          <strong>Mission:</strong> Empowering the next wave of hip hop artists through healing, housing,
-          and higher education—without violence, without exploitation.
+        <p class="hero-quote">
+          “We’re building a label where <span>hip hop isn’t the problem</span>—it’s the path out.
+          Artists get housing, therapy, education, and deals that don’t rob them.”
         </p>
-      </div>
-
-      <div class="grid-2">
-        <div class="card">
-          <div class="card-label">Mission</div>
-          <div class="card-title">Why this label exists.</div>
-          <p class="card-sub">
-            The streets, the system, and the industry have all eaten off of hip hop artists. We’re
-            building the opposite: a label that protects artists while they grow.
-          </p>
-          <ul class="card-list">
-            <li>Trap &amp; R&amp;B treated as tools for healing, not just survival.</li>
-            <li>Artists supported with housing, case management, and mental health care.</li>
-            <li>Every deal built around ownership and long-term stability.</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <div class="card-label">Vision</div>
-          <div class="card-title">Where we’re headed.</div>
-          <p class="card-sub">
-            A world where trap and R&amp;B are platforms for ownership and lasting change—not
-            soundtracks to violence and exploitation.
-          </p>
-          <ul class="card-list">
-            <li>Dallas as a model for nonviolent, artist-centered hip hop work.</li>
-            <li>A blueprint that can be replicated in other cities and scenes.</li>
-            <li>Artists who leave with credits, degrees, and keys—literally.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROGRAMS -->
-    <section id="programs">
-      <div class="section-header">
-        <div class="section-title-block">
-          <div class="eyebrow">Programs</div>
-          <h2 class="section-title">Two lanes into the Next Wave.</h2>
-          <p class="section-sub">
-            We keep the structure simple on purpose: two paths, same expectations. Artists commit
-            to renouncing violence, doing the inner work, and showing up for their craft.
-          </p>
-        </div>
-        <p class="section-note">
-          Every artist gets a plan blending music, mental health, housing, and higher education.
-        </p>
-      </div>
-
-      <div class="grid-2">
-        <div class="program-card">
-          <div class="program-title">
-            In-House Program (Residential)
-            <span class="program-tag">Highest structure</span>
+        <div class="hero-mini-grid">
+          <div class="hero-mini-card">
+            <div class="hero-mini-label">What we focus on</div>
+            <ul class="hero-mini-list">
+              <li>Nonviolent artist development</li>
+              <li>Transitional housing &amp; casework</li>
+              <li>GED &amp; commercial music degrees</li>
+            </ul>
           </div>
-          <p class="program-sub">
-            Transitional or supportive housing for artists ready to go all in on healing and building
-            a real future.
-          </p>
-          <ul class="program-list">
-            <li>Live in program housing with a full-time in-house social worker.</li>
-            <li>Mandatory renouncement of violence / drill crew activity.</li>
-            <li>Required counseling, anger management, and therapy where needed.</li>
-            <li>Case management around employment, sobriety, and stability.</li>
-            <li>
-              Pathways into Dallas College programs:
-              <ul class="program-list" style="margin-top:0.3rem;">
-                <li>Music Business &amp; Entrepreneurship A.A.S.</li>
-                <li>Performing Musician A.A.S.</li>
-                <li>Producer &amp; Songwriter A.A.S.</li>
-                <li>Recording Technology A.A.S.</li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-
-        <div class="program-card">
-          <div class="program-title">
-            Outpatient Program (Non-Residential)
-            <span class="program-tag">Flexible structure</span>
+          <div class="hero-mini-card">
+            <div class="hero-mini-label">Who we serve</div>
+            <ul class="hero-mini-list">
+              <li>Trap / R&amp;B artists &amp; producers</li>
+              <li>Probation &amp; reentry-impacted youth</li>
+              <li>Survivors of system &amp; street harm</li>
+            </ul>
           </div>
-          <p class="program-sub">
-            For artists who aren’t in the house but want support, accountability, and a serious lane
-            in music.
-          </p>
-          <ul class="program-list">
-            <li>Led by an outreach social worker who meets artists where they are.</li>
-            <li>Same values, lighter contact hours and check-ins.</li>
-            <li>Help with court dates, probation terms, and basic stability.</li>
-            <li>Access to studio time, shows, workshops, and collaborations.</li>
-            <li>Progress can earn access to in-house housing opportunities.</li>
-          </ul>
         </div>
-      </div>
+        <div class="hero-footer-row">
+          <span class="hero-tag">Nonprofit label • 5% max royalty back to the org</span>
+          <span class="hero-tag">Pilot: 3–5 artists • Dallas</span>
+        </div>
+      </aside>
     </section>
 
-    <!-- ARTISTS & IMPACT -->
-    <section id="artists">
+    <!-- LABEL TILES (like big label hubs) -->
+    <section id="tiles">
       <div class="section-header">
         <div class="section-title-block">
-          <div class="eyebrow">Artists &amp; impact</div>
-          <h2 class="section-title">Fewer artists, deeper work.</h2>
+          <div class="section-eyebrow">Label overview</div>
+          <h2 class="section-title">Click in to see how Next Wave works.</h2>
           <p class="section-sub">
-            We’re not chasing a giant roster. We’re focused on 3–5 serious artists in the pilot that
-            we can walk with from case management and courtrooms to stages and credits.
+            Instead of scrolling a wall of text, tap a tile to open the full story—mission, programs,
+            founders, social work, and how artists or partners plug in.
           </p>
         </div>
         <p class="section-note">
-          Think of it as a small label, a small house, and a big net of support around every artist.
+          Think of this page as the lobby. Each tile is a door into the full explanation.
         </p>
       </div>
 
-      <div class="grid-3">
-        <div class="card">
-          <div class="card-label">Year 1 goals</div>
-          <div class="card-title">Pilot cohort: 3–5 artists.</div>
-          <p class="card-sub">
-            Trap &amp; R&amp;B artists with real talent and real barriers—probation, housing instability,
-            trauma, or all of the above.
+      <div class="grid-cards">
+        <article class="tile" data-open="modal-mission">
+          <div class="tile-tag">Mission &amp; Vision</div>
+          <div class="tile-title">Why this label exists.</div>
+          <p class="tile-sub">
+            Hip hop is not the problem. It’s the blueprint out. See our one-sentence mission and
+            long-term vision for Dallas and beyond.
           </p>
-          <ul class="card-list">
-            <li>Artists selected for both skill and readiness for change.</li>
-            <li>Custom plans for music, housing, school, and income.</li>
-            <li>Milestones in studio output, education, and wellness.</li>
-          </ul>
-        </div>
+          <div class="tile-footer">
+            Learn more <span>↗</span>
+          </div>
+        </article>
 
-        <div class="card">
-          <div class="card-label">First release</div>
-          <div class="card-title">Next Wave Vol. 1</div>
-          <p class="card-sub">
-            A collaborative mixtape or EP functioning as both fundraiser and proof of concept:
-            nonviolent trap and R&amp;B rooted in real stories.
+        <article class="tile" data-open="modal-programs">
+          <div class="tile-tag">Programs</div>
+          <div class="tile-title">In-house &amp; outpatient lanes.</div>
+          <p class="tile-sub">
+            Two paths: residential artists in the house, and community artists in our outpatient
+            program—with the same expectations and support.
           </p>
-          <ul class="card-list">
-            <li>Recorded with ethical producers and engineers.</li>
-            <li>Artist-centered splits and transparent contracts.</li>
-            <li>Rollout driven by storytelling, not trauma-bait.</li>
-          </ul>
-        </div>
+          <div class="tile-footer">
+            Program model <span>↗</span>
+          </div>
+        </article>
 
-        <div class="card">
-          <div class="card-label">How we measure impact</div>
-          <div class="card-title">Beyond streams and views.</div>
-          <ul class="card-list">
-            <li>Housing stability and reduced justice involvement.</li>
-            <li>GED/A.A.S. enrollment, credits earned, and graduation.</li>
-            <li>Income from shows, features, and placements.</li>
-            <li>Self-reported wellbeing and support networks.</li>
-          </ul>
+        <article class="tile" data-open="modal-founders">
+          <div class="tile-tag">Leadership</div>
+          <div class="tile-title">Paige, Kevin &amp; core roles.</div>
+          <p class="tile-sub">
+            Criminology, HR, social work, and law under one roof. Meet the founders and the key
+            roles that keep artists safe and supported.
+          </p>
+          <div class="tile-footer">
+            Meet the team <span>↗</span>
+          </div>
+        </article>
+
+        <article class="tile" data-open="modal-socialwork">
+          <div class="tile-tag">Housing &amp; Healing</div>
+          <div class="tile-title">Social workers &amp; safety.</div>
+          <p class="tile-sub">
+            In-house and outreach case managers, plus a safety officer, hold the structure while
+            artists work, heal, and perform.
+          </p>
+          <div class="tile-footer">
+            Support model <span>↗</span>
+          </div>
+        </article>
+
+        <article class="tile" data-open="modal-artists">
+          <div class="tile-tag">For Artists</div>
+          <div class="tile-title">Who we’re looking for.</div>
+          <p class="tile-sub">
+            Trap &amp; R&amp;B artists with something real to say, ready to leave violence behind and build
+            a career with ownership.
+          </p>
+          <div class="tile-footer">
+            Artist path <span>↗</span>
+          </div>
+        </article>
+
+        <article class="tile" data-open="modal-partners">
+          <div class="tile-tag">For Partners</div>
+          <div class="tile-title">Courts, donors &amp; collaborators.</div>
+          <p class="tile-sub">
+            Probation officers, foundations, studios, venues, and mentors—see how you can help
+            fund and host the first wave.
+          </p>
+          <div class="tile-footer">
+            Partner with us <span>↗</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- NEWS / FEATURED CONTENT STRIP -->
+    <section id="news">
+      <div class="news-strip">
+        <div class="news-label">News &amp; Featured</div>
+        <div class="news-items">
+          <div class="news-pill">Pilot cohort: 3–5 artists • Target launch: Fall 2026</div>
+          <div class="news-pill">Exploring partnership with Dallas College – Commercial Music</div>
+          <div class="news-pill">Seeking pro-bono entertainment attorneys &amp; publicists</div>
         </div>
       </div>
     </section>
 
-    <!-- TEAM -->
-    <section id="team">
-      <div class="section-header">
-        <div class="section-title-block">
-          <div class="eyebrow">Team</div>
-          <h2 class="section-title">A label backed by social work, law &amp; lived experience.</h2>
-          <p class="section-sub">
-            This isn’t a one-person hustle. It’s a small team of professionals making sure artists are
-            safe, supported, and not signing away their lives.
-          </p>
-        </div>
-        <p class="section-note">
-          President, Vice President, public voice, social workers, lawyer, safety officer, and admin—
-          all moving together.
-        </p>
-      </div>
-
-      <div class="grid-auto">
-        <div class="card">
-          <div class="card-label">President &amp; Founder</div>
-          <div class="card-title">Paige Smith, M.S.</div>
-          <p class="card-sub">
-            Criminologist, former probation officer, and nonprofit leader grounding the label in
-            nonviolence and restorative justice.
-          </p>
-          <ul class="card-list">
-            <li>Designs program, housing, and healing components.</li>
-            <li>Leads mental health, education, and legal partnerships.</li>
-            <li>Represents Next Wave Dallas in civic and media spaces.</li>
-          </ul>
-          <p class="quote">
-            “My job is to <span>protect the artists from being exploited</span>—by the streets, by labels,
-            or by systems.”
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="card-label">Vice President &amp; Co-Founder</div>
-          <div class="card-title">Kevin Almond, MBA</div>
-          <p class="card-sub">
-            Music industry connector and business strategist bringing HR-minded structure to artist
-            development and operations.
-          </p>
-          <ul class="card-list">
-            <li>Builds relationships with studios, producers, and venues.</li>
-            <li>Co-leads branding, visuals, and rollout strategy.</li>
-            <li>Oversees operations, performance tracking, and growth.</li>
-          </ul>
-          <p class="quote">
-            “I make sure artists have what they need to succeed—and that we
-            <span>never repeat the industry’s worst patterns</span>.”
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="card-label">Public voice</div>
-          <div class="card-title">Head of Artist Development &amp; Public Voice</div>
-          <p class="card-sub">
-            The bridge between the lab and the crowd. Makes sure artists’ stories are seen,
-            respected, and amplified.
-          </p>
-          <ul class="card-list">
-            <li>Books shows, showcases, interviews, and partnerships.</li>
-            <li>Guides artist image, styling, and social media strategy.</li>
-            <li>Co-leads public messaging with Paige &amp; Kevin.</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <div class="card-label">Social work</div>
-          <div class="card-title">In-House &amp; Outreach Social Workers</div>
-          <p class="card-sub">
-            One manages the house. One moves through the streets and studios. Together, they keep
-            artists connected and supported.
-          </p>
-          <ul class="card-list">
-            <li>Case management, crisis support, and resource navigation.</li>
-            <li>Help with probation terms, court conditions, and stability.</li>
-            <li>Support artists for shows, interviews, and grants.</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <div class="card-label">Legal &amp; safety</div>
-          <div class="card-title">Lawyer &amp; Safety &amp; Protection Officer</div>
-          <p class="card-sub">
-            A licensed attorney and a safety officer working together so artists can relax, record,
-            and move safely.
-          </p>
-          <ul class="card-list">
-            <li>Draft &amp; review contracts and probation-related legal issues.</li>
-            <li>Keep the org and projects compliant.</li>
-            <li>Maintain a secure, dignified environment at the house and events.</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <div class="card-label">Operations</div>
-          <div class="card-title">Administrative &amp; Legal Support Coordinator</div>
-          <p class="card-sub">
-            The first face people meet and the reason everything runs on time.
-          </p>
-          <ul class="card-list">
-            <li>Manages phones, scheduling, and client intake.</li>
-            <li>Keeps case files, records, and internal databases tight.</li>
-            <li>Coordinates internal meetings, agendas, and logistics.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- GET INVOLVED -->
-    <section id="get-involved">
-      <div class="section-header">
-        <div class="section-title-block">
-          <div class="eyebrow">Get involved</div>
-          <h2 class="section-title">Artists, allies, and funders—there’s a lane for you.</h2>
-          <p class="section-sub">
-            Whether you’re an artist, a probation officer, a social worker, a lawyer, or someone who
-            simply believes in nonviolent hip hop, the next wave is something you can help build.
-          </p>
-        </div>
-        <p class="section-note">
-          Early support means beds, therapy hours, studio time, and tuition for the first cohort.
-        </p>
-      </div>
-
-      <div class="card">
-        <div class="card-title" style="margin-bottom:0.4rem;">Ways to plug in.</div>
-        <div class="pill-row">
-          <div class="soft-pill"><strong>Artists:</strong> apply for future cohorts.</div>
-          <div class="soft-pill"><strong>Probation &amp; courts:</strong> refer eligible clients.</div>
-          <div class="soft-pill"><strong>Donors &amp; funders:</strong> underwrite beds, therapy &amp; tuition.</div>
-          <div class="soft-pill"><strong>Social workers &amp; clinicians:</strong> join the network.</div>
-          <div class="soft-pill"><strong>Lawyers &amp; policy allies:</strong> support contracts &amp; advocacy.</div>
-          <div class="soft-pill"><strong>Venues &amp; studios:</strong> partner on shows and sessions.</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
+    <!-- CONTACT / SIMPLE CTA -->
     <section id="contact">
-      <div class="section-header">
+      <div class="section-header" style="margin-top:1.9rem;">
         <div class="section-title-block">
-          <div class="eyebrow">Contact</div>
-          <h2 class="section-title">Tell us who you are &amp; what you’re dreaming about.</h2>
+          <div class="section-eyebrow">Contact</div>
+          <h2 class="section-title">Ready to talk about the next wave?</h2>
           <p class="section-sub">
-            This is a demo form for now. When you’re ready, it can be wired to your email or a
-            Google Sheet so every artist, ally, and donor lands where you need them.
+            This is a simple demo block you can later connect to a real form. For now, it gives
+            people clear paths to reach out—artists, partners, or press.
           </p>
         </div>
         <p class="section-note">
-          Share what you’re comfortable with—this is just the first hello.
+          When you’re ready, we can wire a form here to your email or Google Sheet.
         </p>
       </div>
 
-      <div class="contact-card">
-        <div>
-          <h3 style="font-size:1rem; margin-bottom:0.4rem;">Start the conversation.</h3>
-          <p style="font-size:0.86rem; color:var(--muted); margin-bottom:0.8rem;">
-            Use this form to introduce yourself, your situation, and how you see yourself in the
-            next wave—artist, partner, staff, or supporter.
-          </p>
-          <div class="pill-row" style="margin-bottom:0.7rem;">
-            <div class="soft-pill">Artist / Creative</div>
-            <div class="soft-pill">Probation / Court Referral</div>
-            <div class="soft-pill">Donor / Foundation</div>
-            <div class="soft-pill">Social Worker / Clinician</div>
-            <div class="soft-pill">Lawyer / Legal Partner</div>
-          </div>
-          <p class="form-note">
-            This button doesn’t submit yet. To make it live, you’ll connect it to an email handler
-            (Formspree, Getform, Apps Script, etc.).
+      <div class="grid-cards">
+        <div class="tile" style="cursor:default;">
+          <div class="tile-tag">Email</div>
+          <div class="tile-title">General inquiries &amp; referrals</div>
+          <p class="tile-sub">
+            Use a label inbox like <strong>info@nextwavedallas.org</strong> or
+            <strong>artists@nextwavedallas.org</strong> so everything is in one place.
           </p>
         </div>
-
-        <div>
-          <form>
-            <div class="form-row">
-              <label>
-                <span>Name</span>
-                <input type="text" name="name" placeholder="Your full name" />
-              </label>
-              <label>
-                <span>Email</span>
-                <input type="email" name="email" placeholder="you@example.com" />
-              </label>
-            </div>
-
-            <div class="form-row">
-              <label>
-                <span>How are you connected to this work?</span>
-                <select name="role">
-                  <option value="">Select one</option>
-                  <option value="artist">Artist / Creative</option>
-                  <option value="referral">Probation / Court / Referral partner</option>
-                  <option value="donor">Donor / Funder</option>
-                  <option value="social-worker">Social worker / Clinician</option>
-                  <option value="lawyer">Lawyer / Legal partner</option>
-                  <option value="community">Community member / Other</option>
-                </select>
-              </label>
-              <label>
-                <span>City</span>
-                <input type="text" name="city" placeholder="Dallas, Oak Cliff, etc." />
-              </label>
-            </div>
-
-            <label>
-              <span>What’s your story, and what are you hoping for?</span>
-              <textarea name="message" placeholder="Share a bit about your situation, your goals, or the artists you’re thinking about."></textarea>
-            </label>
-
-            <p class="form-note">
-              Submitting this form is not a guarantee of services, housing, or representation. It’s a
-              starting point to see whether we’re a fit for each other.
-            </p>
-
-            <button type="button" class="btn btn-primary btn-block">
-              Submit (Demo)
-            </button>
-          </form>
+        <div class="tile" style="cursor:default;">
+          <div class="tile-tag">Social</div>
+          <div class="tile-title">@nextwavedallas</div>
+          <p class="tile-sub">
+            Reserve your handles on Instagram, TikTok, X, and YouTube to make it easy for artists
+            and partners to find you.
+          </p>
         </div>
       </div>
     </section>
@@ -1124,8 +934,293 @@
     </footer>
   </main>
 
+  <!-- MODALS -->
+
+  <!-- Mission & Vision -->
+  <div class="modal-overlay" id="modal-mission">
+    <div class="modal">
+      <div class="modal-header">
+        <div>
+          <div class="modal-tagline">Label overview</div>
+          <div class="modal-title">Mission &amp; Vision</div>
+        </div>
+        <button class="modal-close" data-close="modal-mission">✕</button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Mission:</strong> Empowering the next wave of hip hop artists through healing,
+          housing, and higher education—without violence, without exploitation.</p>
+
+        <p>Next Wave Dallas is a hip hop/trap–specific nonprofit record label. We invest in young
+          artists the system left behind and help them build something real. We replace survival
+          cycles with creative freedom, ownership, and opportunity—through trap and R&amp;B music
+          that uplifts instead of destroys.</p>
+
+        <h4>What makes us different</h4>
+        <ul>
+          <li><strong>Hip hop isn’t the problem.</strong> We treat it as the path out—not something to blame.</li>
+          <li><strong>Nonviolent, anti-exploitation model.</strong> Artists renounce violence and get support to
+            build something better.</li>
+          <li><strong>Ownership first.</strong> Artists retain ownership of their work. The label takes at most a 5%
+            royalty to keep the nonprofit sustainable.</li>
+          <li><strong>Secular &amp; trauma-informed.</strong> No religious angle. Support is rooted in criminology,
+            social work, and harm reduction.</li>
+        </ul>
+
+        <h4>Vision</h4>
+        <p>A world where trap and R&amp;B aren’t tools of survival—but platforms for healing, ownership,
+          and lasting change.</p>
+        <ul>
+          <li>Dallas becomes a national model for nonviolent, artist-centered hip hop work.</li>
+          <li>Our blueprint can be replicated in other cities and labels.</li>
+          <li>Artists leave with credits, degrees, keys to housing, and healthier relationships.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Programs -->
+  <div class="modal-overlay" id="modal-programs">
+    <div class="modal">
+      <div class="modal-header">
+        <div>
+          <div class="modal-tagline">Programming model</div>
+          <div class="modal-title">In-House &amp; Outpatient Programs</div>
+        </div>
+        <button class="modal-close" data-close="modal-programs">✕</button>
+      </div>
+      <div class="modal-body">
+        <p>Our programming model is simple on purpose: two primary paths, same expectations,
+          different levels of structure.</p>
+
+        <h4>In-House Program Clients (Residential)</h4>
+        <p>For artists living in our transitional or supportive housing.</p>
+        <ul>
+          <li>Mandatory renouncement of violence or drill crew activity.</li>
+          <li>Mandatory counseling and treatment (anger management, MRT, therapy, psychiatry).</li>
+          <li>Full-time in-house social worker provides case management and crisis support.</li>
+          <li>Housing rules aligned with probation or court conditions when applicable.</li>
+        </ul>
+
+        <h4>Education Partnership – Dallas College</h4>
+        <p>Paige and Kevin will pursue a partnership with Dallas College to connect artists to
+          <strong>GED</strong> and <strong>Commercial Music A.A.S.</strong> programs, including:</p>
+        <ul>
+          <li>Music Business &amp; Entrepreneurship A.A.S. – approx. $5,940 for 2 years</li>
+          <li>Performing Musician A.A.S. – approx. $5,940 for 2 years</li>
+          <li>Producer &amp; Songwriter A.A.S. – approx. $5,940 for 2 years</li>
+          <li>Recording Technology A.A.S. – approx. $5,940 for 2 years</li>
+        </ul>
+        <p>Part of the partnership conversation will include FAFSA support and tailored schedules for
+          justice-impacted students.</p>
+
+        <h4>Outpatient Program Clients (Non-Residential)</h4>
+        <p>For artists who don’t live in the house but still want support and accountability.</p>
+        <ul>
+          <li>Led by an outreach social worker who moves between courts, jails, studios, and the
+            community.</li>
+          <li>Same values, lighter contact hours and check-ins.</li>
+          <li>Help with employment prep, transportation, appointments, and crisis response.</li>
+          <li>Artists can earn access to housing through progress and participation.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Founders & leadership -->
+  <div class="modal-overlay" id="modal-founders">
+    <div class="modal">
+      <div class="modal-header">
+        <div>
+          <div class="modal-tagline">Leadership</div>
+          <div class="modal-title">Founders &amp; Executive Roles</div>
+        </div>
+        <button class="modal-close" data-close="modal-founders">✕</button>
+      </div>
+      <div class="modal-body">
+        <h4>Paige Smith, M.S. – President &amp; Founder</h4>
+        <p><strong>Background:</strong> Criminologist, former probation officer, nonprofit leader, radical
+          feminist political strategist.</p>
+        <p><strong>Core focus areas:</strong></p>
+        <ul>
+          <li>Designs and oversees therapeutic, educational, and housing components.</li>
+          <li>Builds partnerships with mental health orgs, schools, and legal support.</li>
+          <li>Co-leads legal and ethics oversight with the organization’s lawyer.</li>
+          <li>Holds mission around nonviolence, empowerment, and restorative justice.</li>
+          <li>Serves as a public advocate for the label in civic and political spaces.</li>
+        </ul>
+        <p><em>“My job is to protect the artists from being exploited—by the streets, by labels, or by
+          systems. We make sure they walk away better, even if they never go platinum.”</em></p>
+
+        <h4>Kevin Almond – Vice President &amp; Co-Founder</h4>
+        <p><strong>Background:</strong> MBA with HR concentration, music industry connector, business
+          strategist.</p>
+        <p><strong>Core focus areas:</strong></p>
+        <ul>
+          <li>Builds relationships with studios, producers, engineers, and venues.</li>
+          <li>Co-leads publicity, branding, and visual identity with the publicist.</li>
+          <li>Oversees operations, talent development, and performance tracking.</li>
+          <li>Leads strategic partnerships with distributors, licensors, and platforms.</li>
+        </ul>
+        <p><em>“My job is to make sure the artists have what they need to succeed—and that we never
+          repeat the same exploitative patterns the industry is known for.”</em></p>
+
+        <h4>Head of Artist Development &amp; Public Voice</h4>
+        <p>Bridges creative talent with public recognition.</p>
+        <ul>
+          <li>Secures performances, showcases, press coverage, interviews, and brand deals.</li>
+          <li>Helps artists develop their public image—styling, branding, social media, fan
+            engagement.</li>
+          <li>Leads the label’s public-facing image alongside Paige and Kevin.</li>
+          <li>Guides artist branding from authenticity and empowerment, not exploitation.</li>
+        </ul>
+
+        <h4>Lawyer (Contracts &amp; Legal Advocacy)</h4>
+        <ul>
+          <li>Drafts and reviews contracts for artists, partners, and staff.</li>
+          <li>Handles rights management and negotiations.</li>
+          <li>Supports artists with probation-related legal issues, expungement, and reentry.</li>
+          <li>Ensures the org and projects are legally compliant.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Social work, housing & safety -->
+  <div class="modal-overlay" id="modal-socialwork">
+    <div class="modal">
+      <div class="modal-header">
+        <div>
+          <div class="modal-tagline">Housing &amp; healing</div>
+          <div class="modal-title">Social Workers, Casework &amp; Safety</div>
+        </div>
+        <button class="modal-close" data-close="modal-socialwork">✕</button>
+      </div>
+      <div class="modal-body">
+        <h4>Inpatient Social Worker – Supportive Housing Case Manager</h4>
+        <p><strong>Role:</strong> Primary point of contact for residents living in on-site or long-term
+          transitional housing.</p>
+        <ul>
+          <li>Conducts needs assessments and builds individualized support plans.</li>
+          <li>Coordinates with legal teams, probation, healthcare, and community resources.</li>
+          <li>Tracks progress toward employment, sobriety, mental health, family reunification, and
+            independent living.</li>
+          <li>Helps clients understand and comply with housing rules and probation conditions.</li>
+          <li>Maintains documentation, incident reports, and progress notes.</li>
+          <li>Collaborates with security and leadership to respond to crises in real time.</li>
+        </ul>
+
+        <h4>Outreach Case Manager – Outpatient Social Worker</h4>
+        <p><strong>Role:</strong> Equal parts advocate, case manager, and connector for non-residential
+          clients.</p>
+        <ul>
+          <li>Conducts outreach in courts, jails, the community, and online.</li>
+          <li>Builds trust-based relationships and helps clients set short- and long-term goals.</li>
+          <li>Provides case management: employment prep, transportation, appointments, crisis
+            response.</li>
+          <li>Helps clients navigate probation terms, court conditions, and bureaucratic systems.</li>
+          <li>Supports creative goals—shows, interviews, grants, gigs, collaborations.</li>
+        </ul>
+
+        <h4>Safety &amp; Protection Officer (Security Guard)</h4>
+        <p><strong>Role:</strong> Ensures the safety of clients and staff with a trauma-informed, dignified
+          approach.</p>
+        <ul>
+          <li>Monitors facility entrances, exits, and common areas.</li>
+          <li>Supports staff with conflict de-escalation.</li>
+          <li>Coordinates with local law enforcement only when appropriate.</li>
+          <li>Maintains incident logs and safety reports.</li>
+        </ul>
+
+        <h4>Administrative &amp; Legal Support Coordinator</h4>
+        <ul>
+          <li>Greets visitors, answers phones, and manages scheduling.</li>
+          <li>Maintains case files, internal databases, and intake paperwork.</li>
+          <li>Supports communication with probation officers, public defenders, and partners.</li>
+          <li>Organizes internal meetings, agendas, and minutes.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- For Artists -->
+  <div class="modal-overlay" id="modal-artists">
+    <div class="modal">
+      <div class="modal-header">
+        <div>
+          <div class="modal-tagline">For artists</div>
+          <div class="modal-title">Who we’re looking for &amp; what you can expect</div>
+        </div>
+        <button class="modal-close" data-close="modal-artists">✕</button>
+      </div>
+      <div class="modal-body">
+        <p>Next Wave Dallas is for <strong>trap and R&amp;B artists</strong> who are ready to leave violence
+          behind and build a career with ownership and support.</p>
+
+        <h4>Who you are</h4>
+        <ul>
+          <li>You have real talent and real life on you—maybe probation, court dates, or unstable
+            housing.</li>
+          <li>You’re willing to renounce violence and drill crew activity.</li>
+          <li>You’re open to therapy, casework, and honest conversations.</li>
+          <li>You want to own your masters and build something long-term.</li>
+        </ul>
+
+        <h4>What we bring</h4>
+        <ul>
+          <li>Access to studios, producers, engineers, and creative collaborators.</li>
+          <li>Case management, housing pathways, and mental health support.</li>
+          <li>Education pathways into GED and Commercial Music programs.</li>
+          <li>Shows, press, and brand opportunities aligned with your story—not exploitation.</li>
+        </ul>
+
+        <h4>Year 1 focus</h4>
+        <ul>
+          <li>Pilot cohort of 3–5 artists with individualized plans.</li>
+          <li>A collaborative project (mixtape/EP) as fundraiser and showcase.</li>
+          <li>Tracking impact beyond streams: housing stability, education, income, and wellbeing.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- For Partners -->
+  <div class="modal-overlay" id="modal-partners">
+    <div class="modal">
+      <div class="modal-header">
+        <div>
+          <div class="modal-tagline">For partners &amp; donors</div>
+          <div class="modal-title">How courts, funders &amp; industry allies plug in</div>
+        </div>
+        <button class="modal-close" data-close="modal-partners">✕</button>
+      </div>
+      <div class="modal-body">
+        <p>Next Wave Dallas runs on a mix of <strong>donations, grants, ethical royalties (max 5%)</strong>,
+          merch, and performances. We’re looking for partners who share our values.</p>
+
+        <h4>Court &amp; probation partners</h4>
+        <ul>
+          <li>Refer eligible clients to in-house or outpatient programs.</li>
+          <li>Collaborate on alternatives to incarceration rooted in music and education.</li>
+        </ul>
+
+        <h4>Funders &amp; donors</h4>
+        <ul>
+          <li>Underwrite housing units, therapy hours, and tuition for Commercial Music degrees.</li>
+          <li>Support staff positions: social workers, safety officer, administrative coordinator.</li>
+        </ul>
+
+        <h4>Industry partners</h4>
+        <ul>
+          <li>Studios, producers, and engineers offering ethical deals and mentorship.</li>
+          <li>Venues for sober showcases, community dinners, and web-series tapings.</li>
+          <li>Publicists and branding mentors aligned with empowerment, not exploitation.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
   <script>
-    // Mobile nav toggle
+    // mobile nav toggle
     const navToggle = document.getElementById("navToggle");
     const navLinks = document.getElementById("navLinks");
     const navLinkEls = document.querySelectorAll(".nav-link");
@@ -1136,54 +1231,83 @@
       });
     }
 
-    // Smooth scroll for buttons with data-scroll
-    document.querySelectorAll("[data-scroll]").forEach((btn) => {
-      btn.addEventListener("click", (e) => {
-        const targetId = btn.getAttribute("data-scroll");
-        const target = document.querySelector(targetId);
-        if (target) {
-          e.preventDefault();
-          const offset = 70;
-          const y = target.getBoundingClientRect().top + window.scrollY - offset;
-          window.scrollTo({ top: y, behavior: "smooth" });
-          navLinks.classList.remove("open");
-        }
-      });
-    });
-
-    // Smooth scroll & active state for nav links
-    navLinkEls.forEach((link) => {
-      link.addEventListener("click", (e) => {
-        const href = link.getAttribute("href");
-        if (href.startsWith("#")) {
-          const section = document.querySelector(href);
-          if (section) {
-            e.preventDefault();
-            const offset = 70;
-            const y = section.getBoundingClientRect().top + window.scrollY - offset;
-            window.scrollTo({ top: y, behavior: "smooth" });
-            navLinks.classList.remove("open");
-          }
-        }
-      });
-    });
-
+    // highlight active nav on scroll
     const sections = document.querySelectorAll("main section");
     function updateActiveNav() {
-      let currentId = null;
+      let currentId = "#top";
       const scrollY = window.scrollY;
       sections.forEach((section) => {
         const rect = section.getBoundingClientRect();
         const top = rect.top + window.scrollY - 120;
         const bottom = top + rect.height;
-        if (scrollY >= top && scrollY < bottom) currentId = "#" + section.id;
+        if (scrollY >= top && scrollY < bottom) {
+          currentId = "#" + section.id;
+        }
       });
       navLinkEls.forEach((link) => {
         link.classList.toggle("active", link.getAttribute("href") === currentId);
       });
     }
+
     window.addEventListener("scroll", updateActiveNav);
     window.addEventListener("load", updateActiveNav);
+
+    navLinkEls.forEach((link) => {
+      const href = link.getAttribute("href");
+      if (href && href.startsWith("#")) {
+        link.addEventListener("click", (e) => {
+          const target = document.querySelector(href);
+          if (target) {
+            e.preventDefault();
+            const offset = 70;
+            const y = target.getBoundingClientRect().top + window.scrollY - offset;
+            window.scrollTo({ top: y, behavior: "smooth" });
+            navLinks.classList.remove("open");
+          }
+        });
+      }
+    });
+
+    // Modal logic
+    const overlays = document.querySelectorAll(".modal-overlay");
+
+    function openModal(id) {
+      const el = document.getElementById(id);
+      if (el) el.classList.add("active");
+    }
+
+    function closeModal(id) {
+      const el = document.getElementById(id);
+      if (el) el.classList.remove("active");
+    }
+
+    document.querySelectorAll("[data-open]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const id = btn.getAttribute("data-open");
+        openModal(id);
+      });
+    });
+
+    document.querySelectorAll(".modal-close").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const id = btn.getAttribute("data-close");
+        closeModal(id);
+      });
+    });
+
+    overlays.forEach((overlay) => {
+      overlay.addEventListener("click", (e) => {
+        if (e.target === overlay) {
+          overlay.classList.remove("active");
+        }
+      });
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        overlays.forEach((o) => o.classList.remove("active"));
+      }
+    });
   </script>
 </body>
 </html>
